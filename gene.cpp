@@ -179,6 +179,31 @@ void Gene::compute_structures(Model &model){
     ground_state_energy = model.ground_state_energy();
 }
 
+void Gene::compute_structures_circular(Model &model){
+    //check for circular sequence conditions
+    if (sequence.size() == 0){
+        //throw exception
+		
+    }
+    //initializing the iterators ensures that the intial comparison in next_window_from_all_windows is not problematic
+    std::vector<char>::iterator start = sequence.begin(),stop=sequence.begin()+1;
+    windower.reset_window();
+    while (windower.has_next_window_circular()){
+        windower.next_window_from_all_windows_circular(start,stop);
+        Structure temp;
+        //set the Loci of the structure using the gene's Loci
+        temp.position.chromosome = position.chromosome;
+        temp.position.strand = position.strand;
+        temp.position.start_pos = position.start_pos + windower.get_current_start_offset();
+        temp.position.end_pos = position.start_pos + windower.get_current_stop_offset();
+        //pass the structure and window boundaries to the model
+        model.compute_structure(sequence,start,stop,temp);
+        //push the now computed structure onto these_structures
+        rloop_structures.push_back(temp);
+    }
+    //cout << rloop_structures.size() << endl;
+}
+
 void Gene::compute_residuals(Model &model){
     //verify that the structures have been computed
     //iterate through all the structures

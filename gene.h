@@ -56,6 +56,8 @@ public:
      * useful for debugging. Prints the header and the sequence stored in the current gene.
      */
     void print_gene();
+    
+    void compute_structures_circular(Model& model);
 
     /**
      * Takes a model and uses it to allocate and populate a vector<Structure> of structures. Pushes the result to structures.
