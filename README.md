@@ -1,4 +1,4 @@
-# R-looper 2
+# R-looper
 
 ## Synopsis
 R-loops are three-stranded DNA:RNA hybrid structures that ocurr frequently throughout the genomes of many living things as byproducts of transcription. Far from being an infrequent aberration, R-loops are prevalent, highly conserved among mammals, and have roles in both physiological and pathogenic processies. R-looper is an application designed to enable theoretical analysis of R-loops and R-loop forming regions. R-looper is compatible only with UNIX based architectures (Linux, OSX, etc), and must be compiled on the user's machine.
