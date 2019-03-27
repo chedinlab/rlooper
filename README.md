@@ -29,7 +29,7 @@ If pFC53 was loaded into a track hub the genome browser, or was instead a gene f
 
 ## Arguments
 ### Required
-The **first argument** is the path of the input file, which should be a fasta formatted DNA sequence. The header should contain the name of the sequence, coordinates, and which is the template strand. The sequence will be automatically handled correctly based on the provided orientation of the template strand. TODO: Make the header parser more flexible. 
+The **first argument** is the path of the input file, which should be a fasta formatted DNA sequence. The header should contain the name of the sequence, coordinates, and which is the sense (non-template) strand with respect to transcription. The sequence will be automatically handled correctly based on the provided orientation of the template strand. TODO: Make the header parser more flexible. 
 
 As an example: `>HG19_AIRN_PFC53_REVERSE_dna range=PFC53FIXED:1-3908 5'pad=0 3'pad=0 strand=- repeatMasking=none`
 This header specifies the gene name (HG19_AIRN_PFC53_REVERSE), the coordinates (chromosome PFC53FIXED, bases 1-3908), and the strand ('-'). If multiple sequences / genes are in the input file, the output will still be a single .wig track that contains data for all the input genes. 
