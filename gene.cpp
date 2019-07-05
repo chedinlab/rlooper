@@ -259,7 +259,7 @@ void Gene::dump_structures(string outfilename){
         }
     } else if (position.strand == "-") {
         for (int i = 0; i < rloop_structures.size(); i++) {
-            ss << (this->getPosition().end_pos-rloop_structures[i].position.end_pos+this->getPosition().start_pos-1) << ' ' << (this->getPosition().end_pos-rloop_structures[i].position.start_pos+this->getPosition().start_pos-1) << ' ' <<
+            ss << (this->getPosition().end_pos-rloop_structures[i].position.end_pos+this->getPosition().start_pos) << ' ' << (this->getPosition().end_pos-rloop_structures[i].position.start_pos+this->getPosition().start_pos) << ' ' <<
                rloop_structures[i].free_energy << ' ' << rloop_structures[i].probability << endl;
         }
     }
