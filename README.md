@@ -29,10 +29,10 @@ If pFC53 was loaded into a track hub the genome browser, or was instead a gene f
 
 ## Arguments
 ### Required
-The **first argument** is the path of the input file, which should be a fasta formatted DNA sequence. The header should contain the name of the sequence, coordinates, and which is the sense (non-template) strand with respect to transcription. The sequence will be automatically handled correctly based on the provided orientation of the template strand. TODO: Make the header parser more flexible. 
+The **first argument** is the path of the input file, which should be a fasta formatted DNA sequence **in 5' to 3' orientation**. See `--reverse` below for sequences provided in 3' to 5' orientation. The header should contain the name of the sequence, coordinates, and which is the sense (non-template) strand with respect to the R-loop forming nascent RNA transcript.
 
 As an example: `>HG19_AIRN_PFC53_REVERSE_dna range=PFC53FIXED:1-3908 5'pad=0 3'pad=0 strand=- repeatMasking=none`
-This header specifies the gene name (HG19_AIRN_PFC53_REVERSE), the coordinates (chromosome PFC53FIXED, bases 1-3908), and the strand ('-'). If multiple sequences / genes are in the input file, the output will still be a single .wig track that contains data for all the input genes. 
+This header specifies the gene name (HG19_AIRN_PFC53_REVERSE), the coordinates (chromosome PFC53FIXED, bases 1-3908), and which strand is the the non-template strand ('-'). If multiple sequences / genes are in the input file, the output will still be a single .wig track that contains data for all the input genes. 
  
 When downloading a sequence from the genome browser, make sure to download the sequence with no repeat masking. Multiple sequences / genes can be included in a single FASTA file.
 
@@ -52,7 +52,7 @@ The **second argument** is the name that will be used as the base for the output
 
 #### Sequence Handling Overrides
 
-`--reverse` reverses the transcribed orientation of the provided input sequence.
+`--reverse` reverses the transcribed orientation of the provided input sequence. Required for sequence provided in the 3' to 5' orientation.
 
 `--complement` complements the transcribed orientation of the provided input sequence. 
 
@@ -71,7 +71,7 @@ The **second argument** is the name that will be used as the base for the output
 
 `--top` followed by some integer `n`, indicates that information about the top `n` most favorable single R-loop structures should be outputted to stdout. Useful to get an overarching sense of how the most favorable structures over the sequence are distributed in position and energy.
 
-`--dump` dumps the full statistical ensemble (every possible single R-loop structure) to a file for analysis. It provides the start location, stop location, energy, and probability of each structure relative to the input sequence, and the structures are sorted by decreasing probability. The Energy of the B-duplex (but not probability) which serves as the ground-state for the ensemble is provided as the first entry, with start and stop location 0. 
+`--dump` dumps the full statistical ensemble (every possible single R-loop structure) to a file for analysis. It provides the start location, stop location, energy, and probability of each structure relative to the coordinates of the input sequence, and the structures are sorted by decreasing probability. The Energy of the B-duplex (but not probability) which serves as the ground-state for the ensemble is provided as the first entry, with start and stop location 0. The probability of the B-duplex can easily be approximated by adding up the probabilities of all the other structures. 
 
 `--localaverageenergy` adds an aditional signal to the output as a .wig file. This signal is a measure of local average energy, and can supplement the base pair involvement probability. Disabled by default because it is a computationally expensive signal to compute.
 
