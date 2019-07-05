@@ -257,11 +257,9 @@ void Gene::dump_structures(string outfilename){
             ss << rloop_structures[i].position.start_pos << ' ' << rloop_structures[i].position.end_pos << ' ' <<
                rloop_structures[i].free_energy << ' ' << rloop_structures[i].probability << endl;
         }
-    }
-    else if (position.strand == "-") {
+    } else if (position.strand == "-") {
         for (int i = 0; i < rloop_structures.size(); i++) {
-            ss << sequence.size()-rloop_structures[i].position.end_pos << ' '
-               << sequence.size()-rloop_structures[i].position.start_pos << ' ' <<
+            ss << (this->getPosition().end_pos-rloop_structures[i].position.end_pos+this->getPosition().start_pos-1) << ' ' << (this->getPosition().end_pos-rloop_structures[i].position.start_pos+this->getPosition().start_pos-1) << ' ' <<
                rloop_structures[i].free_energy << ' ' << rloop_structures[i].probability << endl;
         }
     }
