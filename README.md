@@ -75,6 +75,11 @@ The **second argument** is the name that will be used as the base for the output
 
 `--localaverageenergy` adds an aditional signal to the output as a .wig file. This signal is a measure of local average energy, and can supplement the base pair involvement probability. Disabled by default because it is a computationally expensive signal to compute.
 
+## Graphing Script
+Usage: `python graph_rloops.py input_filename_bpprobs.wig input_filename_avgG.wig output_filename`
+
+It will create a .pdf graph that can be opened with the name "output_filename.pdf" displaying both probability and local average energy tracks.
+
 ## Contributors
 
 This software is developed and maintained by Robert Stolz (rstolzATucdavis.edu). 
