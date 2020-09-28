@@ -201,8 +201,8 @@ void Rloop_equilibrium_model::compute_structure(vector<char>& sequence, const st
             b_0 = sequence.begin();
         }
         structure.free_energy += step_forward_bps(b_0,b_0+1);
-        structure.boltzmann_factor = compute_boltzmann_factor(structure.free_energy,T);
     }
+    structure.boltzmann_factor = compute_boltzmann_factor(structure.free_energy,T);
 }
 
 void Rloop_equilibrium_model::compute_residuals(Structure &structure){
