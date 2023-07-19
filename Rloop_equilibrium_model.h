@@ -76,4 +76,28 @@ public:
     long double ground_state_factor();
     long double ground_state_energy();
 };
+
+class Rloop_equilibrium_model_nicked: public Rloop_equilibrium_model{
+
+protected:
+    int nick_site;  // Location relative to start of the provided sequence the nick is located at
+    int nick_radius;  // Distance in basepairs from nick location where no junction engergy required for initiation
+
+public:
+
+    Rloop_equilibrium_model_nicked();
+
+    int getNickSite() const;
+    int getNickRadius() const;
+
+    int setNickSite(int nickSite);
+    int setNickRadius(int nickRadius);
+
+};
+
+
+
+
+
+
 #endif //RLOOPER2_MODEL_H
