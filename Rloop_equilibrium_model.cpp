@@ -222,3 +222,9 @@ long double Rloop_equilibrium_model::ground_state_factor(){
 long double Rloop_equilibrium_model::ground_state_energy(){
     return ((k*pow(alpha, 2)) / 2) - a;
 }
+
+
+Rloop_equilibrium_model::Rloop_equilibrium_model_nicked() {
+
+
+}
